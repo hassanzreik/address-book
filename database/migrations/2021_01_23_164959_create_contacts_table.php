@@ -31,7 +31,7 @@ class CreateContactsTable extends Migration
 
 	        $table->foreign('user_id', 'contacts_user_id_fk')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
 	        $table->foreign('added_by', 'contacts_added_by_fk')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
-	        $table->foreign('job_id', 'contacts_job_title_id_fk')->references('id')->on('job_titles')->onUpdate('SET NULL')->onDelete('SET NULL');
+	        $table->foreign('job_title_id', 'contacts_job_title_id_fk')->references('id')->on('job_titles')->onUpdate('SET NULL')->onDelete('SET NULL');
 	        $table->foreign('label_id', 'contacts_label_id_fk')->references('id')->on('labels')->onUpdate('SET NULL')->onDelete('SET NULL');
 
         });
