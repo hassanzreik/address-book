@@ -44,3 +44,8 @@ input ContactInput{
     deleted_contact_social_profiles: String
     deleted_contact_relationships: String
 }
+
+#type ContactPaginator{
+#    paginatorInfo: PaginatorInfo!
+#    data: [Contact]
+#}

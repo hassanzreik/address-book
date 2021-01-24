@@ -24,6 +24,7 @@ type Mutation {
     logout: LogoutResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Logout@resolve")  @guard(with: ["api"])
 
     saveContact(input: ContactInput! @spread): Contact @field(resolver: "ContactMutator@create") @guard(with: ["api"])
+#    updateContact(input: ContactInput! @spread): Contact @field(resolver: "ContactMutator@update") @guard(with: ["api"])
 }
 
 type Query {
@@ -40,7 +41,7 @@ type Query {
     "contact routers"
     contact(id: ID! @eq): Contact @guard(with: ["api"]) @find
     contacts: [Contact!]! @guard(with: ["api"]) @paginate
-    search(search: String page: Int! first: Int!): [Contact] @guard(with: ["api"]) @field(resolver: "ContactQuery@search")
+    search(search: String!): [Contact] @guard(with: ["api"]) @field(resolver: "ContactQuery@search")
 
 
 }
