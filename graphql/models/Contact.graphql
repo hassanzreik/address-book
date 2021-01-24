@@ -38,4 +38,9 @@ input ContactInput{
     contact_emails: [EmailInput]
     contact_social_profiles: [SocialProfileInput]
     contact_relationships: [RelationshipInput]
+    deleted_contact_phones: String
+    deleted_contact_addresses: String
+    deleted_contact_emails: String
+    deleted_contact_social_profiles: String
+    deleted_contact_relationships: String
 }

@@ -5,6 +5,7 @@ namespace App\GraphQL\Mutations;
 use App\Helpers\Helper;
 use App\Models\Contact;
 use GraphQL\Type\Definition\ResolveInfo;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
@@ -38,16 +39,23 @@ class ContactMutator
 		$contact = Helper::fill($args)->in($contact)->get();
 		$contact->save();
 		$relations = $contact->getRelations();
-		foreach($relations as $k => $v){
-			if(isset($args[$k])) {
+		foreach($relations as $k => $modelName){
+			if(Arr::exists($args, $modelName)) {
 				foreach ($args[$k] as $key => $values) {
-					$model = new $v();
+					$model = new $modelName();
 					$model = Helper::fill($values)->in($model)->get();
 					$contact->{$k}()->save($model);
-//				Log::channel('graphql-log')->warning(json_encode($values));
 				}
 			}
+			if(Arr::exists($args, "deleted_".$k)){
+				$ids = explode(",", $args["deleted_".$k]);
+				if(is_array($ids)){
+					$modelName::whereIn("id",$ids)->where("contact_id",$contact->id)->delete();
+				}
+
+			}
 		}
+
 
 		return $contact;
 	}
