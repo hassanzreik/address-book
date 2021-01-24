@@ -1,0 +1,32 @@
+<?php
+
+namespace Database\Factories;
+
+use App\Models\Contact;
+use App\Models\ContactEmail;
+use App\Models\Label;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class ContactEmailFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = ContactEmail::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+	    return [
+			    "contact_id" => Contact::inRandomOrder()->first()->id,
+			    "label_id" => Label::where("label_type","email")->inRandomOrder()->first()->id,
+			    "email" => $this->faker->email
+	    ];
+    }
+}

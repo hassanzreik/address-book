@@ -5,7 +5,9 @@ namespace App\Models\Base;
 use App\Models\Contact;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -23,10 +25,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class JobTitle extends Model
 {
-	use SoftDeletes;
+	use SoftDeletes, HasFactory;
 	protected $table = 'job_titles';
 
-	public function contacts()
+	public function contacts(): HasMany
 	{
 		return $this->hasMany(Contact::class);
 	}

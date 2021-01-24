@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Models\Base\ContactAddress as BaseContactAddress;
 
-class ContactAddress extends BaseContactAddress
+class  ContactAddress extends BaseContactAddress
 {
 	protected $fillable = [
 		'contact_id',

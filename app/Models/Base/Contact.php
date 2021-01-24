@@ -16,9 +16,11 @@ use App\Models\Label;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use \Illuminate\Database\Eloquent\Relations\BelongsTo;
 /**
  * Class Contact
  * 
@@ -50,7 +52,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Contact extends Model
 {
-	use SoftDeletes;
+	use SoftDeletes, HasFactory;
 	protected $table = 'contacts';
 
 	protected $casts = [
@@ -61,42 +63,42 @@ class Contact extends Model
 		'added_by' => 'int'
 	];
 
-	public function user()
+	public function user(): BelongsTo
 	{
 		return $this->belongsTo(User::class);
 	}
 
-	public function job_title()
+	public function job_title(): BelongsTo
 	{
 		return $this->belongsTo(JobTitle::class);
 	}
 
-	public function label()
+	public function label(): BelongsTo
 	{
 		return $this->belongsTo(Label::class);
 	}
 
-	public function contact_addresses()
+	public function contact_addresses(): HasMany
 	{
 		return $this->hasMany(ContactAddress::class);
 	}
 
-	public function contact_emails()
+	public function contact_emails(): HasMany
 	{
 		return $this->hasMany(ContactEmail::class);
 	}
 
-	public function contact_phones()
+	public function contact_phones(): HasMany
 	{
 		return $this->hasMany(ContactPhone::class);
 	}
 
-	public function contact_relationships()
+	public function contact_relationships(): HasMany
 	{
 		return $this->hasMany(ContactRelationship::class, 'contact_id');
 	}
 
-	public function contact_social_profiles()
+	public function contact_social_profiles(): HasMany
 	{
 		return $this->hasMany(ContactSocialProfile::class);
 	}

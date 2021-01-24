@@ -5,7 +5,9 @@ namespace App\Models\Base;
 use App\Models\Contact;
 use App\Models\Label;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -26,7 +28,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class ContactRelationship extends Model
 {
-	use SoftDeletes;
+	use SoftDeletes, HasFactory;
 	protected $table = 'contact_relationships';
 
 	protected $casts = [
@@ -35,17 +37,17 @@ class ContactRelationship extends Model
 		'label_id' => 'int'
 	];
 
-	public function contact()
+	public function contact(): BelongsTo
 	{
 		return $this->belongsTo(Contact::class, 'contact_id');
 	}
 
-	public function related_to()
+	public function related_to(): BelongsTo
 	{
 		return $this->belongsTo(Contact::class, 'related_to_id');
 	}
 
-	public function label()
+	public function label(): BelongsTo
 	{
 		return $this->belongsTo(Label::class);
 	}

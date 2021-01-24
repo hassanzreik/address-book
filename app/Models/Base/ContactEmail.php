@@ -5,7 +5,9 @@ namespace App\Models\Base;
 use App\Models\Contact;
 use App\Models\Label;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Class ContactEmail
@@ -24,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ContactEmail extends Model
 {
+	use HasFactory;
 	protected $table = 'contact_emails';
 
 	protected $casts = [
@@ -31,12 +34,12 @@ class ContactEmail extends Model
 		'label_id' => 'int'
 	];
 
-	public function contact()
+	public function contact(): BelongsTo
 	{
 		return $this->belongsTo(Contact::class);
 	}
 
-	public function label()
+	public function label(): BelongsTo
 	{
 		return $this->belongsTo(Label::class);
 	}

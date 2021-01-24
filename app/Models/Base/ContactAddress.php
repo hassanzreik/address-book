@@ -6,7 +6,9 @@ use App\Models\Contact;
 use App\Models\Country;
 use App\Models\Label;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -34,7 +36,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class ContactAddress extends Model
 {
-	use SoftDeletes;
+	use SoftDeletes, HasFactory;
 	protected $table = 'contact_addresses';
 
 	protected $casts = [
@@ -43,17 +45,17 @@ class ContactAddress extends Model
 		'country_id' => 'int'
 	];
 
-	public function contact()
+	public function contact(): BelongsTo
 	{
 		return $this->belongsTo(Contact::class);
 	}
 
-	public function country()
+	public function country(): BelongsTo
 	{
 		return $this->belongsTo(Country::class);
 	}
 
-	public function label()
+	public function label(): BelongsTo
 	{
 		return $this->belongsTo(Label::class);
 	}
