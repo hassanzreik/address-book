@@ -37,13 +37,14 @@ class ContactMutator
 		$contact->save();
 		$relations = $contact->getRelations();
 		foreach($relations as $k => $v){
-			foreach ($args[$k] as $key => $values){
-				$model = new $v();
-				$model = Helper::fill($values)->in($model)->get();
-				$contact->{$k}()->save($model);
+			if(isset($args[$k])) {
+				foreach ($args[$k] as $key => $values) {
+					$model = new $v();
+					$model = Helper::fill($values)->in($model)->get();
+					$contact->{$k}()->save($model);
 //				Log::channel('graphql-log')->warning(json_encode($values));
+				}
 			}
-
 		}
 
 		return $contact;
