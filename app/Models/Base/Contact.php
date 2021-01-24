@@ -67,6 +67,14 @@ class Contact extends Model
 		'added_by' => 'int'
 	];
 
+	protected $relations = [
+			"contact_phones" => "App\\Models\\ContactPhone",
+			"contact_addresses" => "App\\Models\\ContactAddress",
+			"contact_emails" => "App\\Models\\ContactEmail",
+			"contact_social_profiles" => "App\\Models\\ContactSocialProfile",
+			"contact_relationships" => "App\\Models\\ContactRelationship",
+
+	];
 	protected static function boot()
 	{
 		parent::boot();
@@ -130,5 +138,10 @@ class Contact extends Model
 	public function contact_social_profiles(): HasMany
 	{
 		return $this->hasMany(ContactSocialProfile::class);
+	}
+
+	public function getRelations()
+	{
+		return $this->relations;
 	}
 }

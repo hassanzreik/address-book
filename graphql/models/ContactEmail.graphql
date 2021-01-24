@@ -4,3 +4,8 @@ type ContactEmail {
     email: String!
     label: Label!
 }
+
+input EmailInput {
+    label_id: Int! @rules(apply: ["required"])
+    email: Email! @rules(apply: ["required"])
+}

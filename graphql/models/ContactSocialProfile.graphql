@@ -4,3 +4,8 @@ type ContactSocialProfile {
     social_profile: String!
     label: Label!
 }
+
+input SocialProfileInput {
+    label_id: Int! @rules(apply: ["required"])
+    social_profile: String! @rules(apply: ["required"])
+}

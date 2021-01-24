@@ -6,6 +6,7 @@ use App\Models\Base\Contact as BaseContact;
 
 class Contact extends BaseContact
 {
+
 	protected $fillable = [
 		'label_id',
 		'first_name',

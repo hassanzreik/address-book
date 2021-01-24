@@ -4,3 +4,8 @@ type ContactRelationships {
     label: Label!
     related_to: Contact!
 }
+
+input RelationshipInput{
+    label_id: Int! @rules(apply: ["required"])
+    related_to_id: Int! @rules(apply: ["required"])
+}

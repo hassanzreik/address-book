@@ -10,3 +10,14 @@ type ContactAddress {
     latitude: String
     longitude: String
 }
+
+input AddressInput {
+    label_id: Int! @rules(apply: ["required"])
+    country_id: Int! @rules(apply: ["required"])
+    city: String
+    street: String
+    building: String
+    apartment: String
+    latitude: String
+    longitude: String
+}

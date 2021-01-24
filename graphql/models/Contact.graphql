@@ -21,3 +21,20 @@ type Photo {
     medium: String
     small: String
 }
+
+
+input ContactInput{
+    label_id: Int!
+    first_name: String! @rules(apply: ["required"])
+    middle_name: String
+    last_name: String
+    company: String
+    note: String
+    photo: Upload
+    job_title_id: Int
+    contact_phones: [PhoneInput]
+    contact_addresses: [AddressInput]
+    contact_emails: [EmailInput]
+    contact_social_profiles: [SocialProfileInput]
+    contact_relationships: [RelationshipInput]
+}

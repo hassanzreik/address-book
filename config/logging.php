@@ -99,6 +99,11 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+
+        'graphql-log' =>[
+		        'driver' => 'single',
+		        'path' => storage_path('logs/graphql-log.log'),
+        ]
     ],
 
 ];
