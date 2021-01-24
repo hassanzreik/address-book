@@ -6,6 +6,7 @@ type ContactEmail {
 }
 
 input EmailInput {
+    id: ID
     label_id: Int! @rules(apply: ["required"])
     email: Email! @rules(apply: ["required"])
 }

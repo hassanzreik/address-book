@@ -32,7 +32,9 @@ class ContactMutator
 	public function create($rootValue, array $args, GraphQLContext $context, ResolveInfo $resolveInfo){
 
 
-		$contact = new Contact();
+		if(isset($args['id']) && !empty($args['id'])) $contact = Contact::find($args['id']);
+		else $contact = new Contact();
+
 		$contact = Helper::fill($args)->in($contact)->get();
 		$contact->save();
 		$relations = $contact->getRelations();

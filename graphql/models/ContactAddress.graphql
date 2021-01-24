@@ -12,6 +12,7 @@ type ContactAddress {
 }
 
 input AddressInput {
+    id: ID
     label_id: Int! @rules(apply: ["required"])
     country_id: Int! @rules(apply: ["required"])
     city: String

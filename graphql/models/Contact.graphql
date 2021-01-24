@@ -24,6 +24,7 @@ type Photo {
 
 
 input ContactInput{
+    id: ID
     label_id: Int!
     first_name: String! @rules(apply: ["required"])
     middle_name: String

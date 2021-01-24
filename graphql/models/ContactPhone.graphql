@@ -7,6 +7,7 @@ type ContactPhone {
 }
 
 input PhoneInput {
+    id: ID
     label_id: Int! @rules(apply: ["required"])
     country_id: Int
     phone_number: String! @rules(apply: ["required"])

@@ -23,7 +23,7 @@ type Mutation {
     updatePassword(input: UpdatePassword! @spread): UpdatePasswordResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\UpdatePassword@resolve")  @guard(with: ["api"])
     logout: LogoutResponse! @field(resolver: "Joselfonseca\\LighthouseGraphQLPassport\\GraphQL\\Mutations\\Logout@resolve")  @guard(with: ["api"])
 
-    createContact(input: ContactInput! @spread): Contact @field(resolver: "ContactMutator@create") @guard(with: ["api"])
+    saveContact(input: ContactInput! @spread): Contact @field(resolver: "ContactMutator@create") @guard(with: ["api"])
 }
 
 type Query {

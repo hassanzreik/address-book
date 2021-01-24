@@ -6,6 +6,7 @@ type ContactSocialProfile {
 }
 
 input SocialProfileInput {
+    id: ID
     label_id: Int! @rules(apply: ["required"])
     social_profile: String! @rules(apply: ["required"])
 }
