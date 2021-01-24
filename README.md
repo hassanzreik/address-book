@@ -10,6 +10,6 @@ Configuration:
 - run `composer install`.
 - run `php artisan storage:link` and `php artisan passport:keys` this to generate private and public keys.
 - all users in the database have default password => `password`.
-- API documentation [here](https://documenter.getpostman.com/view/112747/TW6tMArh) after importing to postman you should import [environment](https://github.com/hassanzreik/address-book/blob/master/Address Book.postman_environment.json) also.
+- API documentation [here](https://documenter.getpostman.com/view/112747/TW6tMArh) after importing to postman you should import [environment](https://github.com/hassanzreik/address-book/blob/master/Address%20Book.postman_environment.json) also.
 - run `php artisan serve`.
 - Have Fun 
