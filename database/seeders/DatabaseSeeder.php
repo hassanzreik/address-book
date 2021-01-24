@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
 //         \App\Models\Contact::factory(50)->create();
 //         \App\Models\ContactPhone::factory(100)->create();
 //         \App\Models\ContactEmail::factory(100)->create();
-         \App\Models\ContactAddress::factory(100)->create();
+//         \App\Models\ContactAddress::factory(100)->create();
          \App\Models\ContactSocialProfile::factory(100)->create();
-         \App\Models\ContactRelationship::factory(50)->create();
+//         \App\Models\ContactRelationship::factory(50)->create();
     }
 }

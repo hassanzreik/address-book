@@ -1,5 +1,6 @@
 type ContactPhone {
     id: ID!
+    label:Label!
     contact: Contact!
     country: Country
     phone_number: String!

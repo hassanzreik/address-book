@@ -13,8 +13,7 @@ use App\Models\ContactRelationship;
 use App\Models\ContactSocialProfile;
 use App\Models\JobTitle;
 use App\Models\Label;
-use App\Models\Post;
-use App\Models\Property;
+use Illuminate\Database\Eloquent\Builder;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Auth\AuthenticationException;
@@ -24,6 +23,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use \Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Auth;
+
 /**
  * Class Contact
  * 
@@ -79,6 +80,10 @@ class Contact extends Model
 
 				$contact->added_by = $user->getAuthIdentifier();
 			}
+		});
+
+		static::addGlobalScope('authed', function (Builder $builder) {
+				$builder->where("added_by", '=', $company_id = Auth::id());
 		});
 	}
 

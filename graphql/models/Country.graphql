@@ -3,5 +3,5 @@ type Country {
     id: ID!
     iso: String!
     title: String!
-    phone_code: String!
+    phonecode: String!
 }
