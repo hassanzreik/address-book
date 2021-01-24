@@ -1,0 +1,6 @@
+type ContactPhone {
+    id: ID!
+    contact: Contact!
+    country: Country
+    phone_number: String!
+}

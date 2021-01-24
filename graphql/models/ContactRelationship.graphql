@@ -1,0 +1,6 @@
+type ContactRelationships {
+    id: ID!
+    contact: Contact!
+    label: Label!
+    related_to: Contact!
+}

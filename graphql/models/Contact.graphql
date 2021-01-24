@@ -1,0 +1,21 @@
+extend type Query {
+    contacts(added_by: ID! @eq): [Contact!]! @all
+}
+type Contact {
+    id: ID!
+    label: Label @belongsTo
+    first_name: String!
+    middle_name: String
+    last_name: String
+    photo: String
+    company: String
+    job_title: JobTitle @belongsTo
+    note: String
+    user: User @belongsTo
+    added_by: User! @belongsTo
+    contact_phones: [ContactPhone] @hasMany
+    contact_addresses: [ContactAddress] @hasMany
+    contact_emails: [ContactEmail] @hasMany
+    social_profiles: [ContactSocialProfile] @hasMany
+    contact_relationships: [ContactRelationships] @hasMany
+}

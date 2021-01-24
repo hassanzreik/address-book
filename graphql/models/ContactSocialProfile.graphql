@@ -1,0 +1,6 @@
+type ContactSocialProfile {
+    id: ID!
+    contact: Contact!
+    social_profile: String!
+    label: Label!
+}

@@ -1,0 +1,4 @@
+type JobTitle{
+    id: ID!
+    title: String!
+}

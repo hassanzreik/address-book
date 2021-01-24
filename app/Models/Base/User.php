@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -39,6 +40,10 @@ class User extends Authenticatable
 
 	public function contacts(): HasMany
 	{
-		return $this->hasMany(Contact::class);
+		return $this->hasMany(Contact::class,'added_by');
+	}
+	public function my_details(): BelongsTo
+	{
+		return $this->belongsTo(Contact::class,'user_id');
 	}
 }

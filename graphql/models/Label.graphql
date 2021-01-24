@@ -1,0 +1,5 @@
+type Label {
+    id: ID!
+    title: String!
+    label_type: String!
+}

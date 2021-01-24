@@ -1,0 +1,6 @@
+type ContactEmail {
+    id: ID!
+    contact: Contact!
+    email: String!
+    label: Label!
+}

@@ -13,8 +13,11 @@ use App\Models\ContactRelationship;
 use App\Models\ContactSocialProfile;
 use App\Models\JobTitle;
 use App\Models\Label;
+use App\Models\Post;
+use App\Models\Property;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -63,9 +66,30 @@ class Contact extends Model
 		'added_by' => 'int'
 	];
 
+	protected static function boot()
+	{
+		parent::boot();
+
+		self::creating(function (Contact $contact): void {
+			if($contact->added_by === null) {
+				$user = auth()->user();
+				if($user === null) {
+					throw new AuthenticationException();
+				}
+
+				$contact->added_by = $user->getAuthIdentifier();
+			}
+		});
+	}
+
 	public function user(): BelongsTo
 	{
-		return $this->belongsTo(User::class);
+		return $this->belongsTo(User::class,"user_id");
+	}
+
+	public function added_by(): BelongsTo
+	{
+		return $this->belongsTo(User::class,"added_by");
 	}
 
 	public function job_title(): BelongsTo

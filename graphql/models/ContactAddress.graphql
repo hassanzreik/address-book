@@ -1,0 +1,12 @@
+type ContactAddress {
+    id: ID!
+    contact: Contact!
+    label: Label!
+    country: Country! @belongsTo
+    city: String!
+    street: String
+    building: String
+    apartment: String
+    latitude: String
+    longitude: String
+}
